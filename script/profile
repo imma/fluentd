@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+function _fluentd_profile {
+  local shome="${_fluentd_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
+  PATH="$shome/bin:$shome/exec:$PATH"
+  export fluentd_plugins=(fluent-plugin-secure-forward fluent-plugin-elasticsearch fluent-plugin-cloudwatch fluent-plugin-cloudwatch-logs fluent-mixin-config-placeholders fluent-plugin-rewrite-tag-filter)
+
+
+}
+
+_fluentd_profile
